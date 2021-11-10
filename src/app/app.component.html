@@ -1,0 +1,60 @@
+<div id="wrapper" class="">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <app-history
+      *ngIf="!onlyBookMarks"
+      (bookmarked)="pushBookMark($event)"
+      (historyChosen)="updateUrl($event)"
+      [history]="history"
+    ></app-history>
+    <app-bookmarks
+      *ngIf="onlyBookMarks"
+      (bookmarked)="pushBookMark($event)"
+      (historyChosen)="updateUrl($event)"
+      [bookmarks]="bookmarks"
+    ></app-bookmarks>
+  </div>
+
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid align-items-center d-flex flex-column">
+      <div class="row justify-content-between my-4" style="width: 500px">
+        <div class="col align-content-start">
+          <button
+            class="btn btn-dark"
+            style="width: 160px"
+            (click)="toggleSideBar('HISTORY')"
+          >
+            History
+            <span class="badge badge-light">{{ history.length }}</span>
+          </button>
+        </div>
+
+        <div class="col align-content-end">
+          <button
+            class="btn btn-dark"
+            style="width: 150px"
+            (click)="toggleSideBar('BOOKMARKS')"
+          >
+            Bookmarks
+            <span class="badge badge-light">{{ bookmarks.length }}</span>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <app-search-bar (urlUpdated)="updateUrl($event)"> </app-search-bar>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <div class="col-lg-12 align-content-center">
+          <app-video-view [videoUrl]="currentVideo"> </app-video-view>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

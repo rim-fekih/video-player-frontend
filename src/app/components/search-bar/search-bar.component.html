@@ -1,0 +1,23 @@
+<div class="d-flex flex-row">
+  <div class="d-flex flex-column mx-3">
+    <input
+      id="search-focus"
+      type="search"
+      id="form1"
+      class="form-control"
+      style="width: 700px"
+      type="text"
+      class="form-control"
+      name="url"
+      [(ngModel)]="url"
+      [ngClass]="{ 'is-invalid': invalidValue }"
+    />
+
+    <div class="invalid-feedback" *ngIf="invalidValue">
+      Provide a valid Youtube URL
+    </div>
+  </div>
+  <div class="d-flex flex-column">
+    <button style="color: black" (click)="validate()">View</button>
+  </div>
+</div>

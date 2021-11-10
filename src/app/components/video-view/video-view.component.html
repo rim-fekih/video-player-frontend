@@ -1,0 +1,18 @@
+<ng-container *ngTemplateOutlet="videoUrl !== '' ? hasUrl : noUrl">
+</ng-container>
+
+<ng-template #hasUrl>
+  <iframe
+    width="600"
+    height="300"
+    [src]="safeUrl(videoUrl)"
+    title="YouTube video player"
+    allow="accelerometer; autoplay; clipboard-write;
+         encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</ng-template>
+
+<ng-template #noUrl>
+  <h2>Provide a youtube link to start watch!</h2>
+</ng-template>

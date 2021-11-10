@@ -1,0 +1,16 @@
+<ul class="sidebar-nav">
+  <li class="sidebar-brand">
+    <a href="#">
+      Bookmarks
+    </a>
+  </li>
+  <div class="list-group">
+    <a href="#" (click)="clickHandler(bookMarkItem.videoUrl)" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let bookMarkItem of bookmarks">
+      <div class="d-flex w-100 justify-content-between">
+        <h5>{{bookMarkItem.createdAt | date:'dd/MM/yy hh:mm:ss'}}</h5>
+        <small (click)="toggleBookMark(bookMarkItem.videoUrl)" click-stop-propagation><i class="fa fa-bookmark" style="font-size:24px "></i></small>
+      </div>
+      <p class="mb-1" style="word-break: break-word">{{bookMarkItem.videoUrl}}</p>
+    </a>
+  </div>
+</ul>

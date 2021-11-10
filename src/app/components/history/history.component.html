@@ -1,0 +1,32 @@
+<ul class="sidebar-nav">
+  <li class="sidebar-brand">
+    <a href="#"> History </a>
+  </li>
+  <div class="list-group">
+    <a
+      href="#"
+      (click)="clickHandler(historyItem.videoUrl)"
+      class="list-group-item list-group-item-action flex-column align-items-start"
+      *ngFor="let historyItem of history"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5>{{ historyItem.createdAt | date: "dd/MM/yy hh:mm:ss" }}</h5>
+        <small
+          (click)="toggleBookMark(historyItem.videoUrl)"
+          click-stop-propagation
+          ><i
+            class="fa"
+            [class]="{
+              'fa-bookmark-o': !historyItem.isBookMarked,
+              'fa-bookmark': historyItem.isBookMarked
+            }"
+            style="font-size: 24px"
+          ></i
+        ></small>
+      </div>
+      <p class="mb-1" style="word-break: break-word">
+        {{ historyItem.videoUrl }}
+      </p>
+    </a>
+  </div>
+</ul>
